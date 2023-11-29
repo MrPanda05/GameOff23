@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "3yR61bqFkxwwwZMNqsTVXit8V1Tp1QQGHTWDZX8GNNly1J6irxVW5+4GTaPSWehpa9zgcCtFnijTfNA0Tqzasg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Adelar\\Desktop\\Uso\\Projetos\\Programming\\_GodotProjects\\GameOff23\\GameOff23.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Adelar\\.nuget\\packages\\godot.sourcegenerators\\4.1.2\\godot.sourcegenerators.4.1.2.nupkg.sha512",
+    "C:\\Users\\Adelar\\.nuget\\packages\\godotsharp\\4.1.2\\godotsharp.4.1.2.nupkg.sha512",
+    "C:\\Users\\Adelar\\.nuget\\packages\\godotsharpeditor\\4.1.2\\godotsharpeditor.4.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

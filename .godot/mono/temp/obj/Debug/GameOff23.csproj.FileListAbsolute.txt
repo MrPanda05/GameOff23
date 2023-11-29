@@ -1,0 +1,17 @@
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GameOff23.deps.json
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GameOff23.runtimeconfig.json
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GameOff23.dll
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GameOff23.pdb
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.csproj.AssemblyReference.cache
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.AssemblyInfoInputs.cache
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.AssemblyInfo.cs
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.csproj.CoreCompileInputs.cache
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.csproj.CopyComplete
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.dll
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\refint\GameOff23.dll
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.pdb
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\GameOff23.genruntimeconfig.cache
+C:\Users\Adelar\Desktop\Uso\Projetos\Programming\_GodotProjects\GameOff23\.godot\mono\temp\obj\Debug\ref\GameOff23.dll

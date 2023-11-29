@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0s81vpfothne"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMove.cs" id="1_xhy0k"]
+[ext_resource type="Texture2D" uid="uid://0ya6vmmpqvxc" path="res://Art/Crocodile.png" id="2_ya2ko"]
+[ext_resource type="PackedScene" uid="uid://lxlxaicqfkc" path="res://Scenes/gun.tscn" id="3_2v37f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnx26"]
+size = Vector2(53.0825, 86.7401)
+
+[node name="Player1" type="CharacterBody2D"]
+position = Vector2(351, 276)
+collision_layer = 4
+collision_mask = 51
+script = ExtResource("1_xhy0k")
+player1Speed = 400.0
+friction = 1.0
+metadata/_edit_group_ = true
+
+[node name="ColiPlayer" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 0.5)
+scale = Vector2(0.904253, 1.37192)
+shape = SubResource("RectangleShape2D_dnx26")
+
+[node name="SpritePlayer" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_ya2ko")
+
+[node name="Gun" parent="." instance=ExtResource("3_2v37f")]
+fireDelay = 0.2
+
+[node name="Camera2D Player" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.4
+drag_right_margin = 0.12
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
