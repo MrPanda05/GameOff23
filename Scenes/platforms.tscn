@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jbpmqbxqacne"]
 
-[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="1_11m4p"]
+[ext_resource type="Texture2D" uid="uid://nwxiwqmqic01" path="res://Art/platform.png" id="1_pvjqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqg2"]
 size = Vector2(125, 20)
@@ -10,9 +10,9 @@ position = Vector2(0, 5)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -0.28)
-scale = Vector2(1, 0.145)
-texture = ExtResource("1_11m4p")
+position = Vector2(-1.00001, 6)
+scale = Vector2(9, 5.375)
+texture = ExtResource("1_pvjqv")
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 collision_layer = 32

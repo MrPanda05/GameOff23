@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgaosy4g6skfp"]
 
 [ext_resource type="Script" path="res://Scripts/bulletEnemy.cs" id="1_7m4l0"]
-[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="2_cb4n1"]
+[ext_resource type="Texture2D" uid="uid://bad7hl1gqti56" path="res://Art/bullet.png" id="2_6s2w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2djq"]
 size = Vector2(49, 20)
@@ -12,9 +12,9 @@ collision_mask = 5
 script = ExtResource("1_7m4l0")
 
 [node name="Bul Sprite" type="Sprite2D" parent="."]
-position = Vector2(-4.5, -0.5)
-scale = Vector2(0.398438, 0.179687)
-texture = ExtResource("2_cb4n1")
+position = Vector2(-0.500001, -0.500002)
+scale = Vector2(5.3125, 6.5625)
+texture = ExtResource("2_6s2w0")
 
 [node name="Bul Coli" type="CollisionShape2D" parent="."]
 position = Vector2(-4.5, 0)

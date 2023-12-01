@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brfl66onubckf"]
 
-[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="1_07qit"]
 [ext_resource type="Script" path="res://Scripts/bullet.cs" id="1_s78bn"]
+[ext_resource type="Texture2D" uid="uid://bad7hl1gqti56" path="res://Art/bullet.png" id="2_wp56d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2djq"]
 size = Vector2(49, 20)
@@ -16,9 +16,10 @@ ampli = 5.0
 offset = 10.0
 
 [node name="Bul Sprite" type="Sprite2D" parent="."]
-position = Vector2(-4.5, -0.5)
-scale = Vector2(0.398438, 0.179687)
-texture = ExtResource("1_07qit")
+z_index = -5
+position = Vector2(2.5, -4.76837e-07)
+scale = Vector2(5.5625, 6.25)
+texture = ExtResource("2_wp56d")
 
 [node name="Bul Coli" type="CollisionShape2D" parent="."]
 position = Vector2(-4.5, 0)

@@ -1,11 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds638lqog0ihc"]
+[gd_scene load_steps=9 format=3 uid="uid://cvpim236yojfr"]
 
-[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="1_6mi4o"]
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_ts4ys"]
 [ext_resource type="Script" path="res://Scripts/EnemyGotHit.cs" id="2_7m2dm"]
+[ext_resource type="Texture2D" uid="uid://puqjfbaki6jp" path="res://Art/Enemy/EnemyIddle.png" id="3_cur3v"]
+[ext_resource type="Texture2D" uid="uid://dgds60rwm7g0x" path="res://Art/Enemy/Enemy1.png" id="4_kk2yv"]
+[ext_resource type="Texture2D" uid="uid://dx4dd15yc6sl8" path="res://Art/Enemy/Enemy2.png" id="5_ff0y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cl7a"]
 size = Vector2(22.0693, 53.1129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y82f6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cur3v")
+}],
+"loop": true,
+"name": &"Iddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kk2yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ff0y1")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_308jl"]
 size = Vector2(8.34934, 0.771667)
@@ -15,6 +39,7 @@ scale = Vector2(2.6734, 2.25934)
 collision_layer = 2
 collision_mask = 101
 script = ExtResource("1_ts4ys")
+health = 3
 fireDelay = 3.0
 metadata/_edit_group_ = true
 
@@ -27,10 +52,12 @@ script = ExtResource("2_7m2dm")
 position = Vector2(0.187028, -10.6226)
 shape = SubResource("RectangleShape2D_0cl7a")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0.74811, -10.6226)
-scale = Vector2(0.136443, 0.398755)
-texture = ExtResource("1_6mi4o")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.24433, -15.0486)
+scale = Vector2(1.8469, 1.93641)
+sprite_frames = SubResource("SpriteFrames_y82f6")
+animation = &"Walk"
+frame_progress = 0.288375
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.561046, 13.7208)

@@ -9,13 +9,17 @@ public partial class PlayerMove : CharacterBody2D
 	[Export] public float friction = 0.1f;
 	[Export] public float acceleration = 0.25f;
 
+	[Export] public Texture2D down, up;
+
 	public int Looks = 1;
 
 	private float dir;
 
 	//public float inflationRate = 0.0005f;
 
-	private Sprite2D Sprite;
+	private Sprite2D SpriteGun;
+
+	private AnimatedSprite2D Sprite;
 	//private CharacterBody2D player;
 	private Node2D gun;
 	public bool isUP, isDown, isCrouch, oneWay;
@@ -28,8 +32,9 @@ public partial class PlayerMove : CharacterBody2D
 	[Export] CollisionShape2D Area, HitBox;
     public override void _Ready()
     {
-        Sprite = GetNode<Sprite2D>("SpritePlayer");
+        Sprite = GetNode<AnimatedSprite2D>("SpritePlayer");
 		gun = GetNode<Node2D>("Gun");
+		SpriteGun = gun.GetNode<Sprite2D>("GunSprite");
     }
   
     public override void _PhysicsProcess(double delta)
@@ -55,11 +60,13 @@ public partial class PlayerMove : CharacterBody2D
 	{
 	if(vel.X < 0)
 		{
+			SpriteGun.FlipH = true;
 			Sprite.FlipH = true;
 			Looks = 0;
 		}
 		else if(vel.X > 0)
 		{
+			SpriteGun.FlipH = false;
 			Sprite.FlipH = false;
 			Looks = 1;
 		}
@@ -122,6 +129,50 @@ public partial class PlayerMove : CharacterBody2D
 	{
 		gun.Position = Pos;
 	}
+	
+	public void playAnim()
+	{
+		if(Velocity == Vector2.Zero && !isDown && !isUP && IsOnFloor())
+		{
+			Sprite.Play("Idle");
+			return;
+		}
+		else if(Velocity == Vector2.Zero && isCrouch && !isUP)
+		{
+			Sprite.Play("Down");
+			return;
+		}
+		else if(Velocity == Vector2.Zero && !isDown && isUP && IsOnFloor())
+		{
+			Sprite.Play("Up");
+			return;
+		}
+		else if(Velocity == Vector2.Zero && isCrouch && isUP)
+		{
+			Sprite.Play("DownUp");
+			return;
+		}
+		else if(Velocity != Vector2.Zero && !isDown && !isUP && IsOnFloor())
+		{
+			Sprite.Play("Walk");
+			return;
+		}
+		else if(Velocity != Vector2.Zero && !isDown && isUP && IsOnFloor())
+		{
+			Sprite.Play("WalkUp");
+			return;
+		}
+		else if(Velocity != Vector2.Zero && isDown && !isUP && IsOnFloor())
+		{
+			Sprite.Play("WalkDown");
+			return;
+		}
+		else if(Velocity != Vector2.Zero && !IsOnFloor())
+		{
+			Sprite.Play("Jump");
+
+		}
+	}
 	public void MovementPlayer(float delta)
 	{
 		//* Change sprite while walking
@@ -139,6 +190,7 @@ public partial class PlayerMove : CharacterBody2D
 		else
 		{
 			vel.X = Mathf.Lerp(vel.X, 0, friction);
+
 		}
 
 		if(vel.X <= 0.00001 && vel.X >= -0.00001)
@@ -168,6 +220,7 @@ public partial class PlayerMove : CharacterBody2D
 			pos.Y += 1;
 			Position = pos;
 		}
+		playAnim();
 		Velocity = vel;
 		MoveAndSlide();
 	}

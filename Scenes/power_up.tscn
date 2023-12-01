@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bll7ddde6i4ms"]
 
-[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="1_pl1xn"]
 [ext_resource type="Script" path="res://Scripts/powerupSet.cs" id="1_s47oo"]
+[ext_resource type="Texture2D" uid="uid://bfhqx0k4wgw1" path="res://Art/Rifle.png" id="2_buhr8"]
 [ext_resource type="Script" path="res://Scripts/PowerUpTest.cs" id="2_uf6tl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc2i"]
@@ -10,10 +10,12 @@ size = Vector2(126, 126)
 [node name="PowerUP" type="Node2D"]
 position = Vector2(300, 180)
 script = ExtResource("1_s47oo")
+fireRate = 0.3
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pl1xn")
+scale = Vector2(8.12, 7.6)
+texture = ExtResource("2_buhr8")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

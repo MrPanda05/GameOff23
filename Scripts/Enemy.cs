@@ -4,7 +4,9 @@ using System;
 public partial class Enemy : CharacterBody2D
 {
     private Vector2 vel;
-    private Sprite2D Sprite;
+    private AnimatedSprite2D Sprite;
+
+    [Export] public int health = 0;
 
     private Timer timer;
 
@@ -30,7 +32,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        Sprite = GetNode<Sprite2D>("Sprite");
+        Sprite = GetNode<AnimatedSprite2D>("Sprite");
         timer = GetNode<Timer>("Timer");
     }
 
@@ -80,7 +82,12 @@ public partial class Enemy : CharacterBody2D
         if(speed != 0)
         {
             NormalEnemy();
+            Sprite.Play("Walk");
             
+        }
+        else
+        {
+            Sprite.Play("Iddle");
         }
 
         if(timer.IsStopped())
