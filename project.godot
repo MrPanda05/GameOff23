@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
+[autoload]
+
+PlaySounds="*res://Scenes/play_sounds.tscn"
+
 [display]
 
 window/size/viewport_width=1280
@@ -85,6 +89,7 @@ OneWayDown={
 2d_physics/layer_5="Colectables"
 2d_physics/layer_6="Platforms"
 2d_physics/layer_7="Triggers"
+2d_physics/layer_8="EnemyBullets"
 
 [physics]
 

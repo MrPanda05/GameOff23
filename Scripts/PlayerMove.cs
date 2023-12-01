@@ -24,6 +24,8 @@ public partial class PlayerMove : CharacterBody2D
 
 	private float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private Vector2 vel, gunPos;
+
+	[Export] CollisionShape2D Area, HitBox;
     public override void _Ready()
     {
         Sprite = GetNode<Sprite2D>("SpritePlayer");
@@ -122,9 +124,11 @@ public partial class PlayerMove : CharacterBody2D
 	}
 	public void MovementPlayer(float delta)
 	{
+		//* Change sprite while walking
 		if(Input.IsActionJustPressed("Jump") && IsOnFloor() && !isCrouch)
 		{
 			Jump(delta);
+			//!Play jump sound
 		}
 
 		dir = Input.GetAxis("LeftP1", "RightP1");
@@ -144,11 +148,19 @@ public partial class PlayerMove : CharacterBody2D
 		if(isCrouch)
 		{
 			SetGunPos(new Vector2(0,40));
+			Area.Position = new Vector2(-15, 36);
+			Area.Scale = new Vector2(1, 0.4f);
+			HitBox.Position = new Vector2(-13.5f, 39);
+			HitBox.Scale = new Vector2(0.904f, 0.5f);
 			vel.X = 0;
 		}
 		else
 		{
 			SetGunPos(Vector2.Zero);
+			Area.Position = new Vector2(-15, -1);
+			Area.Scale = new Vector2(1, 1);
+			HitBox.Position = new Vector2(-13.5f, 1);
+			HitBox.Scale = new Vector2(0.904f, 1.387f);
 		}
 		if(isDown && IsOnFloor() && oneWay)
 		{

@@ -21,10 +21,10 @@ public partial class Weapon : Node2D
     {
             
             timer.Start(fireDelay);
-            GD.Print("Shoot");
             
             for (int i = 0; i < count; i++)
             {
+                //! Play sound on Type
                 var newBullet = bullet.Instantiate() as CharacterBody2D;
                 GetParent().GetParent().AddChild(newBullet);
                 newBullet.Name = "Bullet" + count;

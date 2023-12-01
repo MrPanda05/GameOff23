@@ -1,32 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0s81vpfothne"]
+[gd_scene load_steps=7 format=3 uid="uid://b0s81vpfothne"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMove.cs" id="1_xhy0k"]
+[ext_resource type="Script" path="res://Scripts/KillPlayer.cs" id="2_fembr"]
 [ext_resource type="Texture2D" uid="uid://0ya6vmmpqvxc" path="res://Art/Crocodile.png" id="2_ya2ko"]
 [ext_resource type="PackedScene" uid="uid://lxlxaicqfkc" path="res://Scenes/gun.tscn" id="3_2v37f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnx26"]
-size = Vector2(53.0825, 86.7401)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmnh"]
+size = Vector2(64, 124)
 
-[node name="Player1" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnx26"]
+size = Vector2(27.6472, 86.011)
+
+[node name="Player1" type="CharacterBody2D" node_paths=PackedStringArray("Area", "HitBox")]
 position = Vector2(351, 276)
 collision_layer = 4
-collision_mask = 51
+collision_mask = 179
+safe_margin = 0.001
 script = ExtResource("1_xhy0k")
 player1Speed = 400.0
 friction = 1.0
+Area = NodePath("Area2D/CollisionShape2D")
+HitBox = NodePath("ColiPlayer")
 metadata/_edit_group_ = true
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 128
+script = ExtResource("2_fembr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-15, -1)
+shape = SubResource("RectangleShape2D_ukmnh")
+
 [node name="ColiPlayer" type="CollisionShape2D" parent="."]
-position = Vector2(-14, 0.5)
-scale = Vector2(0.904253, 1.37192)
+position = Vector2(-13.5, 1)
+scale = Vector2(0.904, 1.387)
 shape = SubResource("RectangleShape2D_dnx26")
 
 [node name="SpritePlayer" type="Sprite2D" parent="."]
+position = Vector2(-6, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("2_ya2ko")
 
 [node name="Gun" parent="." instance=ExtResource("3_2v37f")]
-fireDelay = 0.2
+fireDelay = 0.3
 
 [node name="Camera2D Player" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
@@ -41,3 +58,5 @@ editor_draw_drag_margin = true
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEnter"]

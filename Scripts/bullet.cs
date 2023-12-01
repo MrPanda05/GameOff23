@@ -27,8 +27,7 @@ public partial class bullet : CharacterBody2D
         gunType = GetParent().GetChild(0).GetNode<PlayerMove>(".").GetNode<Weapon>("Gun").gunType;
         isGrounded = PlayerDir.IsOnFloor();
         speedX = PlayerDir.Velocity.X;
-        deathTimer = Time.GetTicksMsec() + 8000;
-        GD.Print(speedX);
+        deathTimer = Time.GetTicksMsec() + 3000;
         ocilation = 0;
         GD.Randomize();
         var random = new RandomNumberGenerator();
@@ -40,7 +39,6 @@ public partial class bullet : CharacterBody2D
     {
         if(Time.GetTicksMsec() >= deathTimer)
         {
-            GD.Print("Deleted due to time");
             QueueFree();
         }
         ocilation += (float)delta;
@@ -369,8 +367,8 @@ public partial class bullet : CharacterBody2D
         var coli = MoveAndCollide(vel);
         if(coli != null)
         {
-            GD.Print("Deleted due colission");
             QueueFree();
+
         }
         Velocity = vel;
     }

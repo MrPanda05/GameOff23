@@ -1,9 +1,11 @@
+AudioStreamPlayer2D
+Node
 CollisionShape2D
 Area2D
+Timer
 CharacterBody2D
 Sprite2D
 StaticBody2D
-Timer
 TileMap
 Camera2D
 Node2D
