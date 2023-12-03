@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b0s81vpfothne"]
+[gd_scene load_steps=42 format=3 uid="uid://b0s81vpfothne"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMove.cs" id="1_xhy0k"]
 [ext_resource type="Script" path="res://Scripts/KillPlayer.cs" id="2_fembr"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://b1lm3ieysuh7h" path="res://Art/WalkUp/WalkUp1.png" id="32_vxkm4"]
 [ext_resource type="Texture2D" uid="uid://dmjskvamrbhvc" path="res://Art/WalkUp/WalkUp2.png" id="33_d2trd"]
 [ext_resource type="Texture2D" uid="uid://bfo1lytakoh3s" path="res://Art/WalkUp/WalkUp3.png" id="34_f847e"]
+[ext_resource type="AudioStream" uid="uid://yvonbpo7610p" path="res://Sounds/hitPlayer.wav" id="38_82164"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3hm3j"]
 animations = [{
@@ -214,7 +215,7 @@ animations = [{
 size = Vector2(64, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnx26"]
-size = Vector2(34.292, 86.011)
+size = Vector2(34.292, 87.2386)
 
 [node name="Player1" type="CharacterBody2D" node_paths=PackedStringArray("Area", "HitBox")]
 position = Vector2(351, 276)
@@ -249,7 +250,7 @@ position = Vector2(-15, -1)
 shape = SubResource("RectangleShape2D_ukmnh")
 
 [node name="ColiPlayer" type="CollisionShape2D" parent="."]
-position = Vector2(-13.5, 1)
+position = Vector2(-13.5, 0.5)
 scale = Vector2(0.904, 1.387)
 shape = SubResource("RectangleShape2D_dnx26")
 
@@ -278,5 +279,9 @@ one_shot = true
 [node name="JumpFx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_33a88")
 volume_db = -30.0
+
+[node name="GotHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_82164")
+volume_db = -20.0
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEnter"]

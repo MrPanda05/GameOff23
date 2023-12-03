@@ -9,13 +9,22 @@ public partial class EnemyGotHit : Area2D
 
     //Kill Enemy or player
 
-    public override void _Ready()
-    {
-        enemySoundHit = GetParent().GetParent().GetNode<AudioStreamPlayer>("EnemyHit");
-        playerSoundDeath = GetParent().GetParent().GetNode<AudioStreamPlayer>("PlayerKillViaEnemyColi");
-    }
+    
     public void OnBodyEnter(CharacterBody2D body)
     {
+        if(Name != "KillBox")
+        {
+            enemySoundHit = GetParent().GetParent().GetNode<AudioStreamPlayer>("EnemyHit");
+            playerSoundDeath = GetParent().GetParent().GetNode<AudioStreamPlayer>("PlayerKillViaEnemyColi");
+            enemyDeath = GetParent().GetParent().GetNode<AudioStreamPlayer>("EnemyDeath");
+        }
+        else
+        {
+            enemySoundHit = GetParent().GetNode<AudioStreamPlayer>("EnemyHit");
+            playerSoundDeath = GetParent().GetNode<AudioStreamPlayer>("PlayerKillViaEnemyColi");
+            enemyDeath = GetParent().GetNode<AudioStreamPlayer>("EnemyDeath");
+        }
+
         if(body.Name == "Player1")
         {
             //! Play sound of player dying
@@ -33,6 +42,7 @@ public partial class EnemyGotHit : Area2D
                 var bruh = GetParent().GetParent().GetNode<Respawn>("Respawn");
                 bruh.isDead = true;
                 body.QueueFree();
+                return;
             }
         }
         else
@@ -40,9 +50,11 @@ public partial class EnemyGotHit : Area2D
             //! Play sound of enemy dying
             if(health <= 0)
             {
-                GD.Print("E");
+                enemyDeath.Play();
                 body.QueueFree();
                 GetParent().QueueFree();
+                return;
+
 
             }
             else
@@ -51,6 +63,8 @@ public partial class EnemyGotHit : Area2D
                 enemySoundHit.Play();
                 health -= 1;
                 body.QueueFree();
+                return;
+
             }
         }
     }

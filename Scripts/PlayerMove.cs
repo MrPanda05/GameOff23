@@ -46,7 +46,7 @@ public partial class PlayerMove : CharacterBody2D
 		gunPos = gun.Position;
 		isDown = Input.IsActionPressed("DownP1");
 		isUP = Input.IsActionPressed("Up");
-		oneWay = Input.IsActionJustPressed("OneWayDown");
+		oneWay = Input.IsActionPressed("OneWayDown");
 		isCrouch = vel.X == 0 && isDown && IsOnFloor();
         //GlobalScale += new Vector2(inflationRate, inflationRate);
 		SetRotation();
@@ -313,6 +313,7 @@ public partial class PlayerMove : CharacterBody2D
 		}
 		if(isCrouch)
 		{
+			GD.Print(Position);
 			SetGunPos(new Vector2(0,40));
 			Area.Position = new Vector2(-15, 36);
 			Area.Scale = new Vector2(1, 0.4f);
@@ -322,6 +323,7 @@ public partial class PlayerMove : CharacterBody2D
 		}
 		else
 		{
+			GD.Print(Position);
 			SetGunPos(Vector2.Zero);
 			Area.Position = new Vector2(-15, -1);
 			Area.Scale = new Vector2(1, 1);
@@ -330,6 +332,7 @@ public partial class PlayerMove : CharacterBody2D
 		}
 		if(isDown && IsOnFloor() && oneWay)
 		{
+			GD.Print("PENISONEWAY");
 			var pos = Position;
 			pos.Y += 1;
 			Position = pos;

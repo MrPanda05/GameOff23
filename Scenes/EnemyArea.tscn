@@ -8,7 +8,7 @@ size = Vector2(13.3784, 20)
 [node name="EnemyAreaTurn" type="Area2D"]
 position = Vector2(0, -1)
 collision_layer = 64
-collision_mask = 6
+collision_mask = 262
 script = ExtResource("1_skbvp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

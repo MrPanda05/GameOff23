@@ -86,6 +86,7 @@ OneWayDown={
 2d_physics/layer_6="Platforms"
 2d_physics/layer_7="Triggers"
 2d_physics/layer_8="EnemyBullets"
+2d_physics/layer_9="EnemyHitGround"
 
 [physics]
 
