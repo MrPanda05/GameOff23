@@ -2,4 +2,5 @@
 
 [node name="PlaySounds" type="Node"]
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -12.69

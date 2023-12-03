@@ -11,6 +11,8 @@ public partial class PlayerMove : CharacterBody2D
 
 	[Export] public Texture2D down, up;
 
+    private AudioStreamPlayer audioPlayer;
+
 	public int Looks = 1;
 
 	private float dir;
@@ -35,6 +37,7 @@ public partial class PlayerMove : CharacterBody2D
         Sprite = GetNode<AnimatedSprite2D>("SpritePlayer");
 		gun = GetNode<Node2D>("Gun");
 		SpriteGun = gun.GetNode<Sprite2D>("GunSprite");
+		audioPlayer = GetNode<AudioStreamPlayer>("JumpFx");
     }
   
     public override void _PhysicsProcess(double delta)
@@ -60,68 +63,179 @@ public partial class PlayerMove : CharacterBody2D
 	{
 	if(vel.X < 0)
 		{
-			SpriteGun.FlipH = true;
 			Sprite.FlipH = true;
 			Looks = 0;
 		}
 		else if(vel.X > 0)
 		{
-			SpriteGun.FlipH = false;
 			Sprite.FlipH = false;
 			Looks = 1;
 		}
 	}
-	public void SetRotation()
+
+	public void SetGunRotationAndFlips(bool flipH, bool flipV, float degrees, Vector2 Offset)
 	{
-		if(isUP)
+		SpriteGun.RotationDegrees = degrees;
+		SpriteGun.FlipH = flipH;
+		SpriteGun.FlipV = flipV;
+		//SpriteGun.Offset = Offset;
+		gunPos = Offset;
+		
+	}
+
+	public void RotationLogicGround()
+	{
+		// Olhando pra cima parado e esta nao esta agaixado
+		if(isUP && !isCrouch && Velocity == Vector2.Zero)
 		{
-			gun.RotationDegrees = 90;
-			tempX = Velocity.X;
-			if(tempX > 0)
+			if(Looks == 1)
 			{
-				gun.RotationDegrees = -45;
-				return;
-			}
-			else if (tempX < 0)
-			{
-				gun.RotationDegrees = 45;
-				return;
-			}
-		}
-		else if(isDown)
-		{
-			tempX = Velocity.X;
-			
-			if(!IsOnFloor() && tempX == 0)
-			{
-				gun.RotationDegrees = 90;
-				return;
-			}
-			if(tempX > 0)
-			{
-				gun.RotationDegrees = -135;
-				return;
-			}
-			else if (tempX < 0)
-			{
-				gun.RotationDegrees = 135;
-				return;
+				SetGunRotationAndFlips(false, false, -90, Vector2.Zero);
 			}
 			else
 			{
-				gun.RotationDegrees = 0;
-				return;
+				//SetGunRotationAndFlips(false, true, -90, Vector2.Zero);
+				SetGunRotationAndFlips(false, true, -90, new Vector2(-15,0));
 			}
+		}
+		//Olhando pra cima parado agaixado
+		else if(isUP && isCrouch)
+		{
+			if(Looks == 1)
+			{
+				SetGunRotationAndFlips(false, false, -90, new Vector2(0, 40));
+			}
+			else
+			{
+				SetGunRotationAndFlips(false, true, -90, new Vector2(-10, 40));
+			}
+		}
+		//Olhando pra cima enquanto anda
+		else if(isUP && Velocity != Vector2.Zero && !isDown)
+		{
+			if(Looks == 1)
+			{
+				SetGunRotationAndFlips(false, false, -45, Vector2.Zero);
+			}
+			else
+			{
+				SetGunRotationAndFlips(true, false, 45, new Vector2(-15,0));
+			}
+		}
+		//Agaixado
+		else if(!isUP && isCrouch)
+		{
+			if(Looks == 1)
+			{
+				SetGunRotationAndFlips(false, false, 0, new Vector2(0, 40));
+			}
+			else
+			{
+				SetGunRotationAndFlips(true, false, 0, new Vector2(0, 40));
+			}
+		}
+		//Olhanod pra baixo e andando
+		else if(!isUP && isDown && Velocity != Vector2.Zero)
+		{
+			if(Looks == 1)
+			{
+				SetGunRotationAndFlips(true, true, -135, Vector2.Zero);
+			}
+			else
+			{
+				SetGunRotationAndFlips(false, true, 135, new Vector2(-10,0));
+			}
+		}
+		//Parado our andando sem direcao
+		else if(!isUP && !isDown)
+		{
+			if(Looks == 1)
+			{
+				SetGunRotationAndFlips(false, false, 0, Vector2.Zero);
+			}
+			else
+			{
+				//SetGunRotationAndFlips(true, false, 0, Vector2.Zero);
+				SetGunRotationAndFlips(true, false, 0, new Vector2(-10,0));
+
+			}
+		}
+	}
+
+	public void RotationLogicAir()
+	{
+		//Jumping without moving looking up
+			if(isUP && !isDown && Velocity.X == 0)
+			{
+				if(Looks == 1)
+				{
+					SetGunRotationAndFlips(false, false, -90, Vector2.Zero);
+				}
+				else
+				{
+					SetGunRotationAndFlips(false, true, -90, Vector2.Zero);
+				}
+			}
+			//Jumping without moving looking Down
+			else if(!isUP && isDown && Velocity.X == 0)
+			{
+				if(Looks == 1)
+				{
+					SetGunRotationAndFlips(false, false, 90, Vector2.Zero);
+				}
+				else
+				{
+					SetGunRotationAndFlips(false, true, 90, Vector2.Zero);
+				}
+			}
+			else if(!isUP && isDown && Velocity != Vector2.Zero)
+			{
+				if(Looks == 1)
+				{
+					SetGunRotationAndFlips(true, true, -135, Vector2.Zero);
+				}
+				else
+				{
+					SetGunRotationAndFlips(false, true, 135, Vector2.Zero);
+				}
+			}
+			else if(isUP && Velocity != Vector2.Zero && !isDown)
+			{
+				if(Looks == 1)
+				{
+					SetGunRotationAndFlips(false, false, -45, Vector2.Zero);
+				}
+				else
+				{
+					SetGunRotationAndFlips(true, false, 45, Vector2.Zero);
+				}
+			}
+			else if(!isUP && !isDown)
+			{
+				if(Looks == 1)
+				{
+					SetGunRotationAndFlips(false, false, 0, Vector2.Zero);
+				}
+				else
+				{
+					SetGunRotationAndFlips(true, false, 0, Vector2.Zero);
+				}
+			}
+	}
+	public void SetRotation()
+	{
+		if(IsOnFloor())
+		{
+			RotationLogicGround();
 		}
 		else
 		{
-			gun.RotationDegrees = 0;
-			return;
+			RotationLogicAir();
 		}
-		
 	}
 	public void Jump(float delta)
 	{
+		audioPlayer.Play();
 		vel.Y = -player1Jump;
 	}
 
@@ -222,6 +336,7 @@ public partial class PlayerMove : CharacterBody2D
 		}
 		playAnim();
 		Velocity = vel;
+		gun.Position = gunPos;
 		MoveAndSlide();
 	}
 }

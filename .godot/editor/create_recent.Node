@@ -1,3 +1,5 @@
+AudioStreamPlayer
+TileMap
 AnimatedSprite2D
 CollisionShape2D
 Area2D
@@ -8,6 +10,5 @@ Timer
 CharacterBody2D
 Sprite2D
 StaticBody2D
-TileMap
 Camera2D
 RigidBody2D

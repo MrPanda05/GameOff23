@@ -12,16 +12,19 @@ public partial class Weapon : Node2D
 
     public int gunType = 0;
 
+    private AudioStreamPlayer audioPlayer;
+
     [Export] public float fireDelay;
     public override void _Ready()
     {
         timer = GetParent().GetNode<Timer>("Timer");
+        audioPlayer = GetNode<AudioStreamPlayer>("ShootFx");
     }
     public void Shoot()
     {
             
             timer.Start(fireDelay);
-            
+            audioPlayer.Play();
             for (int i = 0; i < count; i++)
             {
                 //! Play sound on Type

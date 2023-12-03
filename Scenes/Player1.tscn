@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0s81vpfothne"]
+[gd_scene load_steps=41 format=3 uid="uid://b0s81vpfothne"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMove.cs" id="1_xhy0k"]
 [ext_resource type="Script" path="res://Scripts/KillPlayer.cs" id="2_fembr"]
 [ext_resource type="Texture2D" uid="uid://c6q7gbjh8geec" path="res://Art/CrocodileDown.png" id="2_w0pmn"]
 [ext_resource type="Texture2D" uid="uid://0ya6vmmpqvxc" path="res://Art/Crocodile.png" id="2_ya2ko"]
 [ext_resource type="PackedScene" uid="uid://lxlxaicqfkc" path="res://Scenes/gun.tscn" id="3_2v37f"]
+[ext_resource type="AudioStream" uid="uid://wjfullj86plo" path="res://Sounds/jumpTest.wav" id="4_33a88"]
 [ext_resource type="Texture2D" uid="uid://bvc7yf63uraok" path="res://Art/DownAnim/CrocodileDown0.png" id="4_h20p8"]
 [ext_resource type="Texture2D" uid="uid://bg1p5b8o5hguq" path="res://Art/DownAnim/CrocodileDown1.png" id="5_67sea"]
 [ext_resource type="Texture2D" uid="uid://l0v2hypb7rao" path="res://Art/IddleAnim/Idle0.png" id="6_rsluc"]
@@ -12,9 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://c57181wnacbld" path="res://Art/DownUpAnim/DownUp.png" id="7_1ci7m"]
 [ext_resource type="Texture2D" uid="uid://1vj7tuw6f056" path="res://Art/IddleAnim/Idle1.png" id="7_4dx4o"]
 [ext_resource type="Texture2D" uid="uid://c6o62l178locv" path="res://Art/IddleAnim/Idle2.png" id="8_etrh4"]
+[ext_resource type="Texture2D" uid="uid://6f6ruca67oym" path="res://Art/DownUpAnim/DownUp1.png" id="8_qgxen"]
 [ext_resource type="Texture2D" uid="uid://ddjmttibqjacx" path="res://Art/IddleAnim/Idle1Var1.png" id="8_rypw2"]
+[ext_resource type="Texture2D" uid="uid://dk4byl766kbb6" path="res://Art/DownUpAnim/DownUp2.png" id="9_kcoa0"]
 [ext_resource type="Texture2D" uid="uid://bt0jugppf7rly" path="res://Art/IddleAnim/Idle3.png" id="9_xurlg"]
 [ext_resource type="Texture2D" uid="uid://brilhcbkors4e" path="res://Art/IddleAnim/Idle4.png" id="10_0v21c"]
+[ext_resource type="Texture2D" uid="uid://c7y08y5ai2ppv" path="res://Art/DownUpAnim/DownUp0.png" id="10_32wgw"]
 [ext_resource type="Texture2D" uid="uid://fm13mpissu0b" path="res://Art/IddleAnim/Idle5.png" id="11_wwslf"]
 [ext_resource type="Texture2D" uid="uid://dpmwtfcygxgnb" path="res://Art/IddleAnim/Idle6.png" id="12_damqw"]
 [ext_resource type="Texture2D" uid="uid://byvui5fbw52sj" path="res://Art/Walk/Walk1.png" id="15_e71w5"]
@@ -23,8 +27,16 @@
 [ext_resource type="Texture2D" uid="uid://bpquv84hui55w" path="res://Art/Air/jump2.png" id="17_qhknt"]
 [ext_resource type="Texture2D" uid="uid://dw6v51tcheblx" path="res://Art/Air/jump3.png" id="18_mdyqc"]
 [ext_resource type="Texture2D" uid="uid://cg0htkbv5sd1" path="res://Art/UpAnim/WalkUp1.png" id="18_ucdx7"]
-[ext_resource type="Texture2D" uid="uid://b5tij8qtsohu" path="res://Art/WalkUp/WalkUp.png" id="19_jxq6i"]
 [ext_resource type="Texture2D" uid="uid://c4lgrtm2ph4mt" path="res://Art/WalkDown/WalkDown.png" id="19_u6174"]
+[ext_resource type="Texture2D" uid="uid://c5r6w3btdakmg" path="res://Art/Walk/Walk3.png" id="25_h0bqs"]
+[ext_resource type="Texture2D" uid="uid://eyjj0cb8tysr" path="res://Art/WalkDown/WalkDown1.png" id="26_sfqd8"]
+[ext_resource type="Texture2D" uid="uid://djv5mjww0472m" path="res://Art/WalkDown/WalkDown2.png" id="27_uwa2y"]
+[ext_resource type="Texture2D" uid="uid://becqwn0swac43" path="res://Art/WalkDown/WalkDown3.png" id="28_wi7kf"]
+[ext_resource type="Texture2D" uid="uid://cfnrcg6kspcd4" path="res://Art/WalkDown/WalkDown0.png" id="29_3whn0"]
+[ext_resource type="Texture2D" uid="uid://vwokdvufle8u" path="res://Art/WalkUp/WalkUp0.png" id="31_2y134"]
+[ext_resource type="Texture2D" uid="uid://b1lm3ieysuh7h" path="res://Art/WalkUp/WalkUp1.png" id="32_vxkm4"]
+[ext_resource type="Texture2D" uid="uid://dmjskvamrbhvc" path="res://Art/WalkUp/WalkUp2.png" id="33_d2trd"]
+[ext_resource type="Texture2D" uid="uid://bfo1lytakoh3s" path="res://Art/WalkUp/WalkUp3.png" id="34_f847e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3hm3j"]
 animations = [{
@@ -52,15 +64,27 @@ animations = [{
 }],
 "loop": true,
 "name": &"Down",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_1ci7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qgxen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kcoa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qgxen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_32wgw")
 }],
 "loop": true,
 "name": &"DownUp",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -119,33 +143,78 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("16_la0km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_h0bqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_la0km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e71w5")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("19_u6174")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_sfqd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uwa2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_wi7kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uwa2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_sfqd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3whn0")
 }],
 "loop": true,
 "name": &"WalkDown",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_jxq6i")
+"texture": ExtResource("31_2y134")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_vxkm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_d2trd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_f847e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_d2trd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_vxkm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_2y134")
 }],
 "loop": true,
 "name": &"WalkUp",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmnh"]
 size = Vector2(64, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnx26"]
-size = Vector2(27.6472, 86.011)
+size = Vector2(34.292, 86.011)
 
 [node name="Player1" type="CharacterBody2D" node_paths=PackedStringArray("Area", "HitBox")]
 position = Vector2(351, 276)
@@ -166,7 +235,9 @@ z_index = -1
 position = Vector2(-11, 0)
 scale = Vector2(3.8, 3.8)
 sprite_frames = SubResource("SpriteFrames_3hm3j")
-animation = &"Jump"
+animation = &"Walk"
+frame_progress = 0.404662
+offset = Vector2(0.5, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -183,13 +254,15 @@ scale = Vector2(0.904, 1.387)
 shape = SubResource("RectangleShape2D_dnx26")
 
 [node name="Gun" parent="." instance=ExtResource("3_2v37f")]
-position = Vector2(0, 14)
+position = Vector2(-4, 14)
+scale = Vector2(1.1, 1.1)
 fireDelay = 0.4
 
 [node name="Camera2D Player" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
 limit_left = 0
 limit_top = -3000
+limit_bottom = 1000
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.4
@@ -201,5 +274,9 @@ editor_draw_drag_margin = true
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="JumpFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_33a88")
+volume_db = -30.0
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEnter"]
