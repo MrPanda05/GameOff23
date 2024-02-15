@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctnl8o1pedehv"]
-
-[ext_resource type="Script" path="res://Scripts/Respawn.cs" id="1_acjrk"]
-
-[node name="Respawn" type="Node2D"]
-script = ExtResource("1_acjrk")

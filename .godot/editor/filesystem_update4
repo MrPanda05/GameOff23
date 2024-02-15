@@ -1,12 +1,1 @@
-res://Scenes/PlaceScene.tscn
-res://Scripts/bullet.cs
-res://Scripts/bulletEnemy.cs
-res://Scripts/Enemy.cs
-res://Scripts/EnemyArea.cs
-res://Scripts/EnemyGotHit.cs
-res://Scripts/KillPlayer.cs
-res://Scripts/PlayerMove.cs
-res://Scripts/powerupSet.cs
-res://Scripts/PowerUpTest.cs
-res://Scripts/Respawn.cs
-res://Scripts/Weapon.cs
+res://Scenes/Tests/TestScene.tscn
