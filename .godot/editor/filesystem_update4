@@ -1,10 +1,4 @@
-res://Scenes/Enemy.tscn
-res://Scenes/Player1.tscn
 res://Scenes/PlaceScene.tscn
-res://Scenes/power_up.tscn
-res://Scenes/gun.tscn
-res://Scenes/bullet.tscn
-res://Scenes/PlaySounds.tscn
 res://Scripts/bullet.cs
 res://Scripts/bulletEnemy.cs
 res://Scripts/Enemy.cs
@@ -16,5 +10,3 @@ res://Scripts/powerupSet.cs
 res://Scripts/PowerUpTest.cs
 res://Scripts/Respawn.cs
 res://Scripts/Weapon.cs
-res://Scenes/EnemyArea.tscn
-res://Scenes/bulletEnemy.tscn
