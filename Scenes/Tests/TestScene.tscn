@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://4y30qmohuchs"]
+[gd_scene load_steps=4 format=3 uid="uid://4y30qmohuchs"]
+
+[ext_resource type="PackedScene" uid="uid://rvkhwo7qyecl" path="res://PlayerMecha/Player.tscn" id="1_mg50p"]
+[ext_resource type="Texture2D" uid="uid://bmainvibxsvx0" path="res://icon.svg" id="2_kupdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8hen"]
+size = Vector2(1848, 94)
 
 [node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_mg50p")]
+position = Vector2(636, 200)
+jumpForce = 1250.0
+friction = 0.3
+
+[node name="GroundTest" type="StaticBody2D" parent="."]
+position = Vector2(64, 438)
+collision_layer = 64
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTest"]
+position = Vector2(866, 37)
+shape = SubResource("RectangleShape2D_m8hen")
+
+[node name="Sprite2D" type="Sprite2D" parent="GroundTest"]
+position = Vector2(859, 40)
+scale = Vector2(14.4219, 0.734375)
+texture = ExtResource("2_kupdj")

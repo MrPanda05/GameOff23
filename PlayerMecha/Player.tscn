@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://rvkhwo7qyecl"]
+
+[ext_resource type="Script" path="res://PlayerMecha/Player.cs" id="1_dripd"]
+[ext_resource type="PackedScene" uid="uid://diokr4tgi6ve" path="res://Commons/Components/HealthComponent.tscn" id="1_w8iwa"]
+[ext_resource type="PackedScene" uid="uid://bg55k4qm1yfyj" path="res://PlayerMecha/Guns/Gun.tscn" id="2_44woc"]
+[ext_resource type="PackedScene" uid="uid://dxjj230cxicbc" path="res://Commons/Components/HitboxComponent.tscn" id="2_rk2d8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5laud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a6rx"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 192
+script = ExtResource("1_dripd")
+
+[node name="Gun" parent="." instance=ExtResource("2_44woc")]
+
+[node name="SolidHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5laud")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_w8iwa")]
+position = Vector2(-1, 0)
+maxHealth = 3
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_rk2d8")]
+collision_layer = 1
+collision_mask = 58
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_5a6rx")

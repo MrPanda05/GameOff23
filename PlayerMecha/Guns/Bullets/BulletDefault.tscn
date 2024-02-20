@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqpovq3yx6d0k"]
+
+[ext_resource type="Script" path="res://PlayerMecha/Guns/Bullets/BulletDefault.cs" id="1_hyoee"]
+[ext_resource type="PackedScene" uid="uid://dxjj230cxicbc" path="res://Commons/Components/HitboxComponent.tscn" id="2_s2fs8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cv4l7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gwye"]
+
+[node name="BulletDefault" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hyoee")
+speed = 450.0
+deathTimerDelay = 3000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cv4l7")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_s2fs8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_7gwye")

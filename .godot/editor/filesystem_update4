@@ -1,1 +1,15 @@
+res://PlayerMecha/Guns/Bullets/BulletDefault.tscn
+res://PlayerMecha/Guns/Gun.tscn
+res://PlayerMecha/Player.tscn
 res://Scenes/Tests/TestScene.tscn
+res://Commons/Components/Health.cs
+res://Commons/Components/HealthComponent.cs
+res://Commons/Components/HealthNonComponent.cs
+res://Commons/Components/HitboxComponent.cs
+res://Commons/FiniteStateMachine/Fsm.cs
+res://Commons/FiniteStateMachine/State.cs
+res://PlayerMecha/Guns/Bullets/Bullet.cs
+res://PlayerMecha/Guns/Bullets/BulletDefault.cs
+res://PlayerMecha/Guns/Gun.cs
+res://PlayerMecha/Player.cs
+res://test.tscn
